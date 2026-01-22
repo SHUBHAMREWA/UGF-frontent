@@ -13,6 +13,7 @@ const UserCampaigns = () => {
   const navigate = useNavigate();
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [expandedCampaignId, setExpandedCampaignId] = useState(null);
 
   useEffect(() => {

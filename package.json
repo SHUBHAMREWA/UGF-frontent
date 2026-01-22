@@ -68,6 +68,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
+    "postcss-nested": "^7.0.2",
     "postcss-preset-env": "^11.1.1",
     "tailwindcss": "^3.4.0"
   },
