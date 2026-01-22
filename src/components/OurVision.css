@@ -1,0 +1,364 @@
+/* Vision Page Header */
+.vision-page-header {
+  background-color: #F2F2F2;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.vision-header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.vision-page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827; /* text-gray-900 */
+}
+
+.vision-page-header p {
+  font-size: 1.2rem;
+  color: #6B7280; /* text-gray-500 */
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .vision-page-header {
+    padding: 4rem 1.5rem;
+  }
+  
+  .vision-page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .vision-page-header p {
+    font-size: 1.1rem;
+  }
+}
+
+.our-vision-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  color: var(--text-color);
+}
+
+.vision-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.vision-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
+.vision-underline {
+  width: 80px;
+  height: 4px;
+  background:#D14343;
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+.vision-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+}
+
+.vision-content {
+  margin-bottom: 4rem;
+}
+
+.vision-statements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.vision-statement-card {
+  background-color: var(--bg-color-secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.statement-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.vision-statement-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color-secondary);
+}
+
+.vision-focus-areas {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.vision-focus-areas h2 {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.vision-focus-areas h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #D14343;
+  border-radius: 2px;
+}
+
+.focus-areas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.focus-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  transition: all 0.3s ease;
+}
+
+.focus-area-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.focus-area:hover .focus-area-icon {
+  transform: scale(1.1);
+}
+
+.focus-area h3 {
+  font-size: 1.1rem;
+  color: var(--heading-color);
+  margin-top: 0.5rem;
+}
+
+.vision-impact {
+  background-color: var(--bg-color-secondary);
+  border-radius: 16px;
+  padding: 3rem;
+  margin: 5rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-impact:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.05) 0%, rgba(var(--primary-color-rgb), 0) 100%);
+  z-index: 0;
+}
+
+.impact-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.impact-content h2 {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+.impact-content p {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color-secondary);
+}
+
+.impact-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #D14343;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+}
+
+.vision-cta {
+  text-align: center;
+  background-color: var(--bg-color-secondary);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vision-cta h2 {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
+.vision-cta p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  color: var(--text-color-secondary);
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.cta-button.primary {
+  background-color: #D14343;
+  color: white;
+  box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* .cta-button.primary:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.4);
+} */
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: #D14343;
+  border: 2px solid #D14343;
+}
+
+.cta-button.secondary:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vision-header h1 {
+    font-size: 2rem;
+  }
+  
+  .vision-intro {
+    font-size: 1.1rem;
+  }
+  
+  .vision-statements {
+    grid-template-columns: 1fr;
+  }
+  
+  .vision-focus-areas h2 {
+    font-size: 1.7rem;
+  }
+  
+  .focus-areas-grid {
+    gap: 1.5rem;
+  }
+  
+  .focus-area {
+    width: 140px;
+  }
+  
+  .vision-impact {
+    padding: 2rem;
+  }
+  
+  .impact-content h2 {
+    font-size: 1.7rem;
+  }
+  
+  .impact-content p {
+    font-size: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .vision-cta {
+    padding: 2rem;
+  }
+  
+  .vision-cta h2 {
+    font-size: 1.7rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 250px;
+  }
+} 

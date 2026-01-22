@@ -1,0 +1,83 @@
+
+/* App.css - Donatekart Style */
+
+/* rgb(209, 67, 67) theme color primary */
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main-content {
+  flex: 1;
+  min-height: calc(100vh - 70px);
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Loading states */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Error states */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  text-align: center;
+  padding: var(--spacing-8);
+}
+
+.error-icon {
+  font-size: 4rem;
+  color: var(--error);
+  margin-bottom: var(--spacing-4);
+}
+
+.error-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-2);
+}
+
+.error-message {
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    min-height: calc(100vh - 60px);
+  }
+}

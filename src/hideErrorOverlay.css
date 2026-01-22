@@ -1,0 +1,23 @@
+/* 
+ * 🛡️ Disable React Error Overlay for API Errors
+ * This file completely hides the red error overlay in development
+ * for network/API related errors which are expected and handled.
+ */
+
+/* Hide the React error overlay completely for handled errors */
+#webpack-dev-server-client-overlay {
+  display: none !important;
+}
+
+/* Alternative: Make it less intrusive - uncomment if you want to see it sometimes */
+/*
+#webpack-dev-server-client-overlay {
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+#webpack-dev-server-client-overlay:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+*/

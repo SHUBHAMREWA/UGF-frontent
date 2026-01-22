@@ -1,0 +1,110 @@
+/* Success page styles */
+:root {
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --text-color: #1a1a1a;
+  --text-light: #6b7280;
+  --bg-color: #ffffff;
+  --bg-secondary: #f9fafb;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --success-color: #10b981;
+  --success-bg: #d1fae5;
+  --radius: 12px;
+  --transition: 0.2s ease;
+}
+
+/* Dark mode variables */
+.dark {
+  --primary-color: #60a5fa;
+  --primary-hover: #3b82f6;
+  --text-color: #f9fafb;
+  --text-light: #9ca3af;
+  --bg-color: #111827;
+  --bg-secondary: #1f2937;
+  --border-color: #374151;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --success-color: #34d399;
+  --success-bg: rgba(16, 185, 129, 0.2);
+}
+
+.success-container {
+  max-width: 28rem;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  text-align: center;
+}
+
+.success-icon-container {
+  margin: 0 auto 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--success-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--success-color);
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.success-message {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.donation-amount {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.success-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background-color var(--transition);
+}
+
+.home-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.donate-again-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background-color var(--transition);
+}
+
+.donate-again-button:hover {
+  background-color: var(--border-color);
+} 

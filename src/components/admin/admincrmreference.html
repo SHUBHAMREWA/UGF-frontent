@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Global Federation India - CRM Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-down {
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg border-b-4 border-blue-600">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">UGF</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">United Global Federation India</h1>
+                        <p class="text-sm text-gray-600">CRM Portal</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Welcome, Admin</span>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex space-x-8">
+                <div class="py-4 px-2 border-b-2 border-blue-600 text-blue-600 font-medium">
+                    Offline Donations Portal
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Donations Tab -->
+        <div id="donations-tab" class="tab-content">
+            <!-- Dashboard Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Total Donations</p>
+                            <p id="total-donations" class="text-2xl font-bold text-gray-900">₹35,000</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600 text-xl">💰</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Total Donors</p>
+                            <p id="total-donors" class="text-2xl font-bold text-gray-900">2</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <span class="text-green-600 text-xl">👥</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">80G Donations</p>
+                            <p id="eighty-g-count" class="text-2xl font-bold text-gray-900">1</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <span class="text-purple-600 text-xl">📋</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-orange-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">This Month</p>
+                            <p id="month-donations" class="text-2xl font-bold text-gray-900">₹35,000</p>
+                        </div>
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <span class="text-orange-600 text-xl">📈</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+                    <h2 class="text-xl font-bold text-gray-800">Offline Donations</h2>
+                    <button id="add-donation-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center space-x-2">
+                        <span>➕</span>
+                        <span>Add New Donation</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Donations List -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <input type="text" placeholder="Search by donor name, mobile, email..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <option>All Payment Modes</option>
+                            <option>Cash</option>
+                            <option>Cheque</option>
+                            <option>UPI</option>
+                            <option>Bank Transfer</option>
+                        </select>
+                        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                            Export
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Receipt No.</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Donor</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mode</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">80G</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="donations-table">
+                            <tr class="hover:bg-gray-50" data-receipt="SN/2024/001">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">SN/2024/001</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">Rajesh Kumar</div>
+                                    <div class="text-sm text-gray-500">+91 98765 43210</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₹25,000</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">UPI</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">15 Dec 2024</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">Yes</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-900 view-donation" data-receipt="SN/2024/001">View</button>
+                                    <button class="text-purple-600 hover:text-purple-900 edit-donation" data-receipt="SN/2024/001">Edit</button>
+                                    <button class="text-green-600 hover:text-green-900 email-donation" data-receipt="SN/2024/001">Email</button>
+                                    <button class="text-orange-600 hover:text-orange-900 download-donation" data-receipt="SN/2024/001">Download</button>
+                                    <button class="text-indigo-600 hover:text-indigo-900 print-donation" data-receipt="SN/2024/001">Print</button>
+                                    <button class="text-red-600 hover:text-red-900 delete-donation" data-receipt="SN/2024/001">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50" data-receipt="SN/2024/002">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">SN/2024/002</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">Priya Sharma</div>
+                                    <div class="text-sm text-gray-500">+91 87654 32109</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₹10,000</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Cheque</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">14 Dec 2024</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">No</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-900 view-donation" data-receipt="SN/2024/002">View</button>
+                                    <button class="text-purple-600 hover:text-purple-900 edit-donation" data-receipt="SN/2024/002">Edit</button>
+                                    <button class="text-green-600 hover:text-green-900 email-donation" data-receipt="SN/2024/002">Email</button>
+                                    <button class="text-orange-600 hover:text-orange-900 download-donation" data-receipt="SN/2024/002">Download</button>
+                                    <button class="text-indigo-600 hover:text-indigo-900 print-donation" data-receipt="SN/2024/002">Print</button>
+                                    <button class="text-red-600 hover:text-red-900 delete-donation" data-receipt="SN/2024/002">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- Add Donation Modal -->
+    <div id="donation-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-800">Add New Offline Donation</h3>
+                    <button id="close-modal" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                </div>
+            </div>
+            
+            <form id="donation-form" class="p-6 space-y-6">
+                <!-- Donor Search Section -->
+                <div class="bg-blue-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-3">Step 1: Find or Add Donor</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Search Existing Donor</label>
+                            <input type="text" id="donor-search" placeholder="Search by name, mobile, email, or PAN..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <div id="donor-results" class="mt-2 hidden bg-white border border-gray-200 rounded-lg shadow-lg max-h-40 overflow-y-auto"></div>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-gray-500">OR</span>
+                        </div>
+                        <button type="button" id="new-donor-btn" class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
+                            Create New Donor
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donor Details Section -->
+                <div id="donor-details" class="bg-green-50 rounded-lg p-4 hidden">
+                    <h4 class="font-semibold text-gray-800 mb-3">Donor Information</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                            <input type="text" id="donor-name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Mobile Number *</label>
+                            <input type="tel" id="donor-mobile" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="donor-email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">PAN Number</label>
+                            <input type="text" id="donor-pan" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="ABCDE1234F">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <textarea id="donor-address" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation Details Section -->
+                <div class="bg-yellow-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-3">Step 2: Donation Details</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Purpose/Category *</label>
+                            <div class="flex space-x-2">
+                                <select id="donation-purpose" required class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Select Purpose</option>
+                                    <option value="education">Education</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="environment">Environment</option>
+                                    <option value="disaster-relief">Disaster Relief</option>
+                                    <option value="general">General Donation</option>
+                                    <option value="other">Other (Specify)</option>
+                                </select>
+                                <button type="button" id="add-category-btn" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                                    + Add New
+                                </button>
+                            </div>
+                            <input type="text" id="new-category" placeholder="Enter new category name..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mt-2 hidden">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Amount (₹) *</label>
+                            <input type="number" id="donation-amount" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Donation Date *</label>
+                            <input type="date" id="donation-date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Payment Mode *</label>
+                            <select id="payment-mode" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Mode</option>
+                                <option value="cash">Cash</option>
+                                <option value="cheque">Cheque</option>
+                                <option value="upi">UPI</option>
+                                <option value="bank">Bank Transfer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Reference/UTR/Cheque No.</label>
+                            <input type="text" id="payment-reference" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">80G Certificate Required?</label>
+                            <select id="eighty-g" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                            <textarea id="donation-notes" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Any additional notes..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 80G Warning -->
+                <div id="eighty-g-warning" class="bg-red-50 border border-red-200 rounded-lg p-4 hidden">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-red-500 text-xl">⚠️</span>
+                        <div>
+                            <h5 class="font-medium text-red-800">PAN Required for 80G Certificate</h5>
+                            <p class="text-sm text-red-700 mt-1">For 80G tax exemption certificate, donor's PAN number is mandatory as per Income Tax regulations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-4 border-t border-gray-200">
+                    <button type="button" id="cancel-donation" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Save Donation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-green-600 text-2xl">✓</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Donation Recorded Successfully!</h3>
+            <p class="text-gray-600 mb-4">Receipt Number: <span id="receipt-number" class="font-medium text-blue-600">SN/2024/003</span></p>
+            <div class="flex space-x-3">
+                <button id="email-receipt" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                    Email Receipt
+                </button>
+                <div class="flex-1 relative">
+                    <button id="download-receipt" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-1">
+                        <span>Download</span>
+                        <span class="text-xs">▼</span>
+                    </button>
+                    <div id="success-download-options" class="absolute left-0 mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+                        <button class="w-full text-left px-4 py-2 hover:bg-gray-50 success-download-simple" data-format="simple">Simple Receipt</button>
+                        <button class="w-full text-left px-4 py-2 hover:bg-gray-50 success-download-professional" data-format="professional">Professional Receipt</button>
+                    </div>
+                </div>
+                <button id="print-receipt" class="flex-1 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+                    Print Receipt
+                </button>
+            </div>
+            <button id="close-success" class="mt-3 text-gray-500 hover:text-gray-700">Close</button>
+        </div>
+    </div>
+
+    <!-- View Donation Modal -->
+    <div id="view-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-800">Donation Details</h3>
+                    <button id="close-view-modal" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div id="donation-details-content" class="space-y-4">
+                    <!-- Content will be populated dynamically -->
+                </div>
+                <div class="flex justify-end space-x-3 mt-6 pt-4 border-t border-gray-200">
+                    <button id="edit-from-view" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        Edit Donation
+                    </button>
+                    <div class="relative">
+                        <button id="download-from-view" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-1">
+                            <span>Download</span>
+                            <span class="text-xs">▼</span>
+                        </button>
+                        <div id="download-options" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10 hidden">
+                            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 download-simple" data-format="simple">Simple Receipt</button>
+                            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 download-professional" data-format="professional">Professional Receipt</button>
+                        </div>
+                    </div>
+                    <button id="print-from-view" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                        Print Receipt
+                    </button>
+                    <button id="email-from-view" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Email Receipt
+                    </button>
+                    <button id="delete-from-view" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Donation Modal -->
+    <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-800">Edit Donation</h3>
+                    <button id="close-edit-modal" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                </div>
+            </div>
+            <form id="edit-donation-form" class="p-6 space-y-6">
+                <input type="hidden" id="edit-receipt-number">
+                <!-- Form content will be populated dynamically -->
+                <div id="edit-form-content"></div>
+                <div class="flex justify-end space-x-4 pt-4 border-t border-gray-200">
+                    <button type="button" id="cancel-edit" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        Update Donation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-red-600 text-2xl">⚠️</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Delete Donation Record</h3>
+                <p class="text-gray-600 mb-4">Are you sure you want to delete this donation record? This action cannot be undone.</p>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                    <p class="text-sm text-yellow-800">Receipt: <span id="delete-receipt-number" class="font-medium"></span></p>
+                    <p class="text-sm text-yellow-800">Donor: <span id="delete-donor-name" class="font-medium"></span></p>
+                    <p class="text-sm text-yellow-800">Amount: <span id="delete-amount" class="font-medium"></span></p>
+                </div>
+                <div class="flex space-x-3">
+                    <button id="cancel-delete" class="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors">
+                        Cancel
+                    </button>
+                    <button id="confirm-delete" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors">
+                        Delete Record
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Receipt Modal -->
+    <div id="print-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-gray-800">Print Receipt</h3>
+                <div class="flex space-x-2">
+                    <button id="print-professional-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Professional Format
+                    </button>
+                    <button id="print-simple-btn" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                        Simple Format
+                    </button>
+                    <button id="close-print-modal" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                </div>
+            </div>
+            <div id="print-content" class="p-6">
+                <!-- Print content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let donorsDatabase = [
+            { id: 1, name: 'Rajesh Kumar', mobile: '+91 98765 43210', email: 'rajesh@email.com', pan: 'ABCDE1234F', address: '123 Main St, Mumbai' },
+            { id: 2, name: 'Priya Sharma', mobile: '+91 87654 32109', email: 'priya@email.com', pan: 'FGHIJ5678K', address: '456 Park Ave, Delhi' }
+        ];
+        
+        let donationsDatabase = [
+            { receiptNumber: 'SN/2024/001', donorId: 1, donorName: 'Rajesh Kumar', donorMobile: '+91 98765 43210', amount: 25000, paymentMode: 'upi', date: '2024-12-15', eightyG: 'yes', purpose: 'education', reference: 'UPI123456', notes: '' },
+            { receiptNumber: 'SN/2024/002', donorId: 2, donorName: 'Priya Sharma', donorMobile: '+91 87654 32109', amount: 10000, paymentMode: 'cheque', date: '2024-12-14', eightyG: 'no', purpose: 'healthcare', reference: 'CHQ789012', notes: '' }
+        ];
+
+        let categories = ['education', 'healthcare', 'environment', 'disaster-relief', 'general', 'other'];
+
+        // Modal Controls
+        const donationModal = document.getElementById('donation-modal');
+        const successModal = document.getElementById('success-modal');
+        const viewModal = document.getElementById('view-modal');
+        const editModal = document.getElementById('edit-modal');
+        const deleteModal = document.getElementById('delete-modal');
+        const printModal = document.getElementById('print-modal');
+        
+        const addDonationBtn = document.getElementById('add-donation-btn');
+        const closeModal = document.getElementById('close-modal');
+        const cancelDonation = document.getElementById('cancel-donation');
+        const closeSuccess = document.getElementById('close-success');
+        const closeViewModal = document.getElementById('close-view-modal');
+        const closeEditModal = document.getElementById('close-edit-modal');
+        const cancelEdit = document.getElementById('cancel-edit');
+        const closePrintModal = document.getElementById('close-print-modal');
+        const cancelDelete = document.getElementById('cancel-delete');
+
+        // Update dashboard totals
+        function updateDashboard() {
+            const totalAmount = donationsDatabase.reduce((sum, donation) => sum + donation.amount, 0);
+            const uniqueDonors = new Set(donationsDatabase.map(d => d.donorId)).size;
+            const eightyGCount = donationsDatabase.filter(d => d.eightyG === 'yes').length;
+            
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            const monthlyAmount = donationsDatabase
+                .filter(d => {
+                    const donationDate = new Date(d.date);
+                    return donationDate.getMonth() === currentMonth && donationDate.getFullYear() === currentYear;
+                })
+                .reduce((sum, donation) => sum + donation.amount, 0);
+
+            document.getElementById('total-donations').textContent = `₹${totalAmount.toLocaleString('en-IN')}`;
+            document.getElementById('total-donors').textContent = uniqueDonors;
+            document.getElementById('eighty-g-count').textContent = eightyGCount;
+            document.getElementById('month-donations').textContent = `₹${monthlyAmount.toLocaleString('en-IN')}`;
+        }
+
+        // Initialize dashboard
+        updateDashboard();
+
+        addDonationBtn.addEventListener('click', () => {
+            donationModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        [closeModal, cancelDonation].forEach(btn => {
+            btn.addEventListener('click', () => {
+                donationModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                resetForm();
+            });
+        });
+
+        closeSuccess.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        [closeViewModal, closeEditModal, cancelEdit].forEach(btn => {
+            btn.addEventListener('click', () => {
+                viewModal.classList.add('hidden');
+                editModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        [closePrintModal, cancelDelete].forEach(btn => {
+            btn.addEventListener('click', () => {
+                printModal.classList.add('hidden');
+                deleteModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Donor Search Functionality
+        const donorSearch = document.getElementById('donor-search');
+        const donorResults = document.getElementById('donor-results');
+        const newDonorBtn = document.getElementById('new-donor-btn');
+        const donorDetails = document.getElementById('donor-details');
+
+        donorSearch.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            if (query.length > 2) {
+                const matches = donorsDatabase.filter(donor => 
+                    donor.name.toLowerCase().includes(query) ||
+                    donor.mobile.includes(query) ||
+                    donor.email.toLowerCase().includes(query) ||
+                    donor.pan.toLowerCase().includes(query)
+                );
+                
+                if (matches.length > 0) {
+                    donorResults.innerHTML = matches.map(donor => `
+                        <div class="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 donor-option" 
+                             data-id="${donor.id}" data-name="${donor.name}" data-mobile="${donor.mobile}" 
+                             data-email="${donor.email}" data-pan="${donor.pan}" data-address="${donor.address}">
+                            <div class="font-medium text-gray-900">${donor.name}</div>
+                            <div class="text-sm text-gray-500">${donor.mobile} • ${donor.email}</div>
+                        </div>
+                    `).join('');
+                    donorResults.classList.remove('hidden');
+                } else {
+                    donorResults.classList.add('hidden');
+                }
+            } else {
+                donorResults.classList.add('hidden');
+            }
+        });
+
+        // Handle donor selection
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.donor-option')) {
+                const option = e.target.closest('.donor-option');
+                document.getElementById('donor-name').value = option.dataset.name;
+                document.getElementById('donor-mobile').value = option.dataset.mobile;
+                document.getElementById('donor-email').value = option.dataset.email;
+                document.getElementById('donor-pan').value = option.dataset.pan;
+                document.getElementById('donor-address').value = option.dataset.address;
+                
+                donorResults.classList.add('hidden');
+                donorDetails.classList.remove('hidden');
+                donorSearch.value = option.dataset.name;
+            }
+        });
+
+        newDonorBtn.addEventListener('click', () => {
+            donorDetails.classList.remove('hidden');
+            donorSearch.value = '';
+            donorResults.classList.add('hidden');
+            // Clear form for new donor
+            document.getElementById('donor-name').value = '';
+            document.getElementById('donor-mobile').value = '';
+            document.getElementById('donor-email').value = '';
+            document.getElementById('donor-pan').value = '';
+            document.getElementById('donor-address').value = '';
+        });
+
+        // Add new category functionality
+        const addCategoryBtn = document.getElementById('add-category-btn');
+        const newCategoryInput = document.getElementById('new-category');
+        const donationPurpose = document.getElementById('donation-purpose');
+
+        addCategoryBtn.addEventListener('click', () => {
+            newCategoryInput.classList.toggle('hidden');
+            if (!newCategoryInput.classList.contains('hidden')) {
+                newCategoryInput.focus();
+            }
+        });
+
+        newCategoryInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const newCategory = this.value.trim();
+                if (newCategory && !categories.includes(newCategory.toLowerCase())) {
+                    categories.push(newCategory.toLowerCase());
+                    const option = document.createElement('option');
+                    option.value = newCategory.toLowerCase();
+                    option.textContent = newCategory;
+                    donationPurpose.insertBefore(option, donationPurpose.lastElementChild);
+                    donationPurpose.value = newCategory.toLowerCase();
+                    this.value = '';
+                    this.classList.add('hidden');
+                }
+            }
+        });
+
+        // 80G Validation
+        const eightyG = document.getElementById('eighty-g');
+        const eightyGWarning = document.getElementById('eighty-g-warning');
+        const donorPan = document.getElementById('donor-pan');
+
+        eightyG.addEventListener('change', function() {
+            if (this.value === 'yes') {
+                eightyGWarning.classList.remove('hidden');
+                donorPan.required = true;
+            } else {
+                eightyGWarning.classList.add('hidden');
+                donorPan.required = false;
+            }
+        });
+
+        // Set today's date as default
+        document.getElementById('donation-date').valueAsDate = new Date();
+
+        // Form Submission
+        const donationForm = document.getElementById('donation-form');
+        donationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate 80G requirement
+            if (eightyG.value === 'yes' && !donorPan.value.trim()) {
+                alert('PAN number is required for 80G certificate');
+                donorPan.focus();
+                return;
+            }
+            
+            // Validate amount
+            const amount = parseFloat(document.getElementById('donation-amount').value);
+            if (amount <= 0) {
+                alert('Please enter a valid donation amount');
+                return;
+            }
+            
+            // Validate date (not future)
+            const donationDate = new Date(document.getElementById('donation-date').value);
+            const today = new Date();
+            today.setHours(23, 59, 59, 999);
+            if (donationDate > today) {
+                alert('Donation date cannot be in the future');
+                return;
+            }
+            
+            // Save or update donor
+            const donorName = document.getElementById('donor-name').value;
+            const donorMobile = document.getElementById('donor-mobile').value;
+            const donorEmail = document.getElementById('donor-email').value;
+            const donorPanValue = document.getElementById('donor-pan').value;
+            const donorAddress = document.getElementById('donor-address').value;
+            
+            let donorId;
+            const existingDonor = donorsDatabase.find(d => d.mobile === donorMobile);
+            
+            if (existingDonor) {
+                donorId = existingDonor.id;
+                // Update existing donor
+                existingDonor.name = donorName;
+                existingDonor.email = donorEmail;
+                existingDonor.pan = donorPanValue;
+                existingDonor.address = donorAddress;
+            } else {
+                // Create new donor
+                donorId = Math.max(...donorsDatabase.map(d => d.id), 0) + 1;
+                donorsDatabase.push({
+                    id: donorId,
+                    name: donorName,
+                    mobile: donorMobile,
+                    email: donorEmail,
+                    pan: donorPanValue,
+                    address: donorAddress
+                });
+            }
+            
+            // Generate receipt number
+            const receiptNumber = 'SN/2024/' + String(Math.floor(Math.random() * 1000) + 100).padStart(3, '0');
+            document.getElementById('receipt-number').textContent = receiptNumber;
+            
+            // Create donation record
+            const donation = {
+                receiptNumber,
+                donorId,
+                donorName,
+                donorMobile,
+                amount,
+                paymentMode: document.getElementById('payment-mode').value,
+                date: document.getElementById('donation-date').value,
+                eightyG: eightyG.value,
+                purpose: document.getElementById('donation-purpose').value,
+                reference: document.getElementById('payment-reference').value,
+                notes: document.getElementById('donation-notes').value
+            };
+            
+            donationsDatabase.unshift(donation);
+            
+            // Add to table and update dashboard
+            addDonationToTable(donation);
+            updateDashboard();
+            
+            // Show success modal
+            donationModal.classList.add('hidden');
+            successModal.classList.remove('hidden');
+            
+            resetForm();
+        });
+
+        function addDonationToTable(donation) {
+            const tableBody = document.getElementById('donations-table');
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-gray-50 fade-in';
+            row.dataset.receipt = donation.receiptNumber;
+            
+            const formatDate = new Date(donation.date).toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            });
+            
+            const modeColors = {
+                'cash': 'bg-yellow-100 text-yellow-800',
+                'cheque': 'bg-blue-100 text-blue-800',
+                'upi': 'bg-green-100 text-green-800',
+                'bank': 'bg-purple-100 text-purple-800'
+            };
+            
+            row.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">${donation.receiptNumber}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">${donation.donorName}</div>
+                    <div class="text-sm text-gray-500">${donation.donorMobile}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₹${donation.amount.toLocaleString('en-IN')}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 py-1 text-xs font-medium ${modeColors[donation.paymentMode]} rounded-full">${donation.paymentMode.toUpperCase()}</span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${formatDate}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 py-1 text-xs font-medium ${donation.eightyG === 'yes' ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800'} rounded-full">${donation.eightyG === 'yes' ? 'Yes' : 'No'}</span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <button class="text-blue-600 hover:text-blue-900 view-donation" data-receipt="${donation.receiptNumber}">View</button>
+                    <button class="text-purple-600 hover:text-purple-900 edit-donation" data-receipt="${donation.receiptNumber}">Edit</button>
+                    <button class="text-green-600 hover:text-green-900 email-donation" data-receipt="${donation.receiptNumber}">Email</button>
+                    <button class="text-orange-600 hover:text-orange-900 download-donation" data-receipt="${donation.receiptNumber}">Download</button>
+                    <button class="text-indigo-600 hover:text-indigo-900 print-donation" data-receipt="${donation.receiptNumber}">Print</button>
+                    <button class="text-red-600 hover:text-red-900 delete-donation" data-receipt="${donation.receiptNumber}">Delete</button>
+                </td>
+            `;
+            
+            tableBody.insertBefore(row, tableBody.firstChild);
+        }
+
+        // Action button event listeners - FIXED
+        document.addEventListener('click', function(e) {
+            const target = e.target;
+            
+            if (target.classList.contains('view-donation')) {
+                const receiptNumber = target.dataset.receipt;
+                const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+                const donor = donorsDatabase.find(d => d.id === donation.donorId);
+                
+                if (donation && donor) {
+                    showDonationDetails(donation, donor);
+                }
+            }
+            
+            if (target.classList.contains('edit-donation')) {
+                const receiptNumber = target.dataset.receipt;
+                const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+                const donor = donorsDatabase.find(d => d.id === donation.donorId);
+                
+                if (donation && donor) {
+                    showEditForm(donation, donor);
+                }
+            }
+            
+            if (target.classList.contains('email-donation')) {
+                const receiptNumber = target.dataset.receipt;
+                alert(`Receipt ${receiptNumber} emailed successfully!`);
+            }
+            
+            if (target.classList.contains('download-donation')) {
+                const receiptNumber = target.dataset.receipt;
+                showDownloadOptions(target, receiptNumber);
+            }
+            
+            if (target.classList.contains('print-donation')) {
+                const receiptNumber = target.dataset.receipt;
+                showPrintModal(receiptNumber);
+            }
+            
+            if (target.classList.contains('delete-donation')) {
+                const receiptNumber = target.dataset.receipt;
+                showDeleteConfirmation(receiptNumber);
+            }
+        });
+
+        function showDonationDetails(donation, donor) {
+            const content = document.getElementById('donation-details-content');
+            const formatDate = new Date(donation.date).toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            content.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-3">Donor Information</h4>
+                        <div class="space-y-2 text-sm">
+                            <div><span class="font-medium">Name:</span> ${donor.name}</div>
+                            <div><span class="font-medium">Mobile:</span> ${donor.mobile}</div>
+                            <div><span class="font-medium">Email:</span> ${donor.email || 'N/A'}</div>
+                            <div><span class="font-medium">PAN:</span> ${donor.pan || 'N/A'}</div>
+                            <div><span class="font-medium">Address:</span> ${donor.address || 'N/A'}</div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-3">Donation Details</h4>
+                        <div class="space-y-2 text-sm">
+                            <div><span class="font-medium">Receipt No:</span> ${donation.receiptNumber}</div>
+                            <div><span class="font-medium">Amount:</span> ₹${donation.amount.toLocaleString('en-IN')}</div>
+                            <div><span class="font-medium">Purpose:</span> ${donation.purpose}</div>
+                            <div><span class="font-medium">Payment Mode:</span> ${donation.paymentMode.toUpperCase()}</div>
+                            <div><span class="font-medium">Reference:</span> ${donation.reference || 'N/A'}</div>
+                            <div><span class="font-medium">Date:</span> ${formatDate}</div>
+                            <div><span class="font-medium">80G Certificate:</span> ${donation.eightyG === 'yes' ? 'Yes' : 'No'}</div>
+                        </div>
+                    </div>
+                </div>
+                ${donation.notes ? `<div class="bg-yellow-50 p-4 rounded-lg mt-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Notes</h4>
+                    <p class="text-sm text-gray-700">${donation.notes}</p>
+                </div>` : ''}
+            `;
+            
+            // Set current receipt for actions
+            document.getElementById('edit-from-view').dataset.receipt = donation.receiptNumber;
+            document.getElementById('download-from-view').dataset.receipt = donation.receiptNumber;
+            document.getElementById('email-from-view').dataset.receipt = donation.receiptNumber;
+            document.getElementById('print-from-view').dataset.receipt = donation.receiptNumber;
+            document.getElementById('delete-from-view').dataset.receipt = donation.receiptNumber;
+            
+            viewModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showEditForm(donation, donor) {
+            document.getElementById('edit-receipt-number').value = donation.receiptNumber;
+            
+            const content = document.getElementById('edit-form-content');
+            content.innerHTML = `
+                <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                    <h4 class="font-semibold text-gray-800 mb-3">Donor Information</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                            <input type="text" id="edit-donor-name" value="${donor.name}" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Mobile Number *</label>
+                            <input type="tel" id="edit-donor-mobile" value="${donor.mobile}" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="edit-donor-email" value="${donor.email || ''}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">PAN Number</label>
+                            <input type="text" id="edit-donor-pan" value="${donor.pan || ''}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <textarea id="edit-donor-address" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">${donor.address || ''}</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-3">Donation Details</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Purpose/Category *</label>
+                            <select id="edit-donation-purpose" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Purpose</option>
+                                ${categories.map(cat => `<option value="${cat}" ${cat === donation.purpose ? 'selected' : ''}>${cat.charAt(0).toUpperCase() + cat.slice(1)}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Amount (₹) *</label>
+                            <input type="number" id="edit-donation-amount" value="${donation.amount}" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Donation Date *</label>
+                            <input type="date" id="edit-donation-date" value="${donation.date}" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Payment Mode *</label>
+                            <select id="edit-payment-mode" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select Mode</option>
+                                <option value="cash" ${donation.paymentMode === 'cash' ? 'selected' : ''}>Cash</option>
+                                <option value="cheque" ${donation.paymentMode === 'cheque' ? 'selected' : ''}>Cheque</option>
+                                <option value="upi" ${donation.paymentMode === 'upi' ? 'selected' : ''}>UPI</option>
+                                <option value="bank" ${donation.paymentMode === 'bank' ? 'selected' : ''}>Bank Transfer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Reference/UTR/Cheque No.</label>
+                            <input type="text" id="edit-payment-reference" value="${donation.reference || ''}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">80G Certificate Required?</label>
+                            <select id="edit-eighty-g" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="no" ${donation.eightyG === 'no' ? 'selected' : ''}>No</option>
+                                <option value="yes" ${donation.eightyG === 'yes' ? 'selected' : ''}>Yes</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                            <textarea id="edit-donation-notes" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">${donation.notes || ''}</textarea>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            editModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Edit form submission
+        document.getElementById('edit-donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const receiptNumber = document.getElementById('edit-receipt-number').value;
+            const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+            const donor = donorsDatabase.find(d => d.id === donation.donorId);
+            
+            if (donation && donor) {
+                // Update donor
+                donor.name = document.getElementById('edit-donor-name').value;
+                donor.mobile = document.getElementById('edit-donor-mobile').value;
+                donor.email = document.getElementById('edit-donor-email').value;
+                donor.pan = document.getElementById('edit-donor-pan').value;
+                donor.address = document.getElementById('edit-donor-address').value;
+                
+                // Update donation
+                donation.donorName = donor.name;
+                donation.donorMobile = donor.mobile;
+                donation.purpose = document.getElementById('edit-donation-purpose').value;
+                donation.amount = parseFloat(document.getElementById('edit-donation-amount').value);
+                donation.date = document.getElementById('edit-donation-date').value;
+                donation.paymentMode = document.getElementById('edit-payment-mode').value;
+                donation.reference = document.getElementById('edit-payment-reference').value;
+                donation.eightyG = document.getElementById('edit-eighty-g').value;
+                donation.notes = document.getElementById('edit-donation-notes').value;
+                
+                // Update table row
+                updateTableRow(donation);
+                updateDashboard();
+                
+                editModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                
+                alert('Donation updated successfully!');
+            }
+        });
+
+        function updateTableRow(donation) {
+            const row = document.querySelector(`tr[data-receipt="${donation.receiptNumber}"]`);
+            if (row) {
+                const formatDate = new Date(donation.date).toLocaleDateString('en-IN', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+                
+                const modeColors = {
+                    'cash': 'bg-yellow-100 text-yellow-800',
+                    'cheque': 'bg-blue-100 text-blue-800',
+                    'upi': 'bg-green-100 text-green-800',
+                    'bank': 'bg-purple-100 text-purple-800'
+                };
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">${donation.receiptNumber}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${donation.donorName}</div>
+                        <div class="text-sm text-gray-500">${donation.donorMobile}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₹${donation.amount.toLocaleString('en-IN')}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-medium ${modeColors[donation.paymentMode]} rounded-full">${donation.paymentMode.toUpperCase()}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${formatDate}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-medium ${donation.eightyG === 'yes' ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800'} rounded-full">${donation.eightyG === 'yes' ? 'Yes' : 'No'}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                        <button class="text-blue-600 hover:text-blue-900 view-donation" data-receipt="${donation.receiptNumber}">View</button>
+                        <button class="text-purple-600 hover:text-purple-900 edit-donation" data-receipt="${donation.receiptNumber}">Edit</button>
+                        <button class="text-green-600 hover:text-green-900 email-donation" data-receipt="${donation.receiptNumber}">Email</button>
+                        <button class="text-orange-600 hover:text-orange-900 download-donation" data-receipt="${donation.receiptNumber}">Download</button>
+                        <button class="text-indigo-600 hover:text-indigo-900 print-donation" data-receipt="${donation.receiptNumber}">Print</button>
+                        <button class="text-red-600 hover:text-red-900 delete-donation" data-receipt="${donation.receiptNumber}">Delete</button>
+                    </td>
+                `;
+            }
+        }
+
+        function downloadReceipt(receiptNumber, format = 'simple') {
+            const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+            const donor = donorsDatabase.find(d => d.id === donation.donorId);
+            
+            if (donation && donor) {
+                let receiptContent;
+                
+                if (format === 'professional') {
+                    receiptContent = generateProfessionalReceipt(donation, donor);
+                } else {
+                    receiptContent = generateSimpleReceipt(donation, donor);
+                }
+                
+                // Create and download file
+                const blob = new Blob([receiptContent], { type: format === 'professional' ? 'text/html' : 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Receipt_${receiptNumber}_${format}.${format === 'professional' ? 'html' : 'txt'}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }
+        }
+
+        function generateSimpleReceipt(donation, donor) {
+            return `
+UNITED GLOBAL FEDERATION INDIA
+Donation Receipt
+
+Receipt No: ${donation.receiptNumber}
+Date: ${new Date(donation.date).toLocaleDateString('en-IN')}
+
+Donor Details:
+Name: ${donor.name}
+Mobile: ${donor.mobile}
+Email: ${donor.email || 'N/A'}
+PAN: ${donor.pan || 'N/A'}
+
+Donation Details:
+Amount: ₹${donation.amount.toLocaleString('en-IN')}
+Purpose: ${donation.purpose}
+Payment Mode: ${donation.paymentMode.toUpperCase()}
+Reference: ${donation.reference || 'N/A'}
+80G Certificate: ${donation.eightyG === 'yes' ? 'Yes' : 'No'}
+
+Thank you for your generous donation!
+            `;
+        }
+
+        function generateProfessionalReceipt(donation, donor) {
+            const formatDate = new Date(donation.date).toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            return `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Receipt - ${donation.receiptNumber}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .receipt { max-width: 800px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 3px solid #2563eb; padding-bottom: 20px; margin-bottom: 30px; }
+        .logo { width: 80px; height: 80px; background: #2563eb; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold; }
+        .org-name { font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 5px; }
+        .receipt-title { font-size: 20px; color: #6b7280; }
+        .receipt-info { background: #f3f4f6; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        .receipt-number { font-size: 24px; font-weight: bold; color: #2563eb; text-align: center; }
+        .receipt-date { text-align: center; color: #6b7280; margin-top: 5px; }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .detail-section { background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb; }
+        .section-title { font-size: 18px; font-weight: bold; color: #1f2937; margin-bottom: 15px; }
+        .detail-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .detail-label { color: #6b7280; }
+        .detail-value { font-weight: 600; color: #1f2937; }
+        .amount-highlight { background: #dbeafe; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; }
+        .amount-text { font-size: 24px; font-weight: bold; color: #2563eb; }
+        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #e5e7eb; }
+        .thank-you { font-size: 18px; color: #059669; font-weight: 600; margin-bottom: 10px; }
+        .contact-info { color: #6b7280; font-size: 14px; }
+        .eighty-g-badge { background: #7c3aed; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        @media print { body { background: white; } .receipt { box-shadow: none; } }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <div class="header">
+            <div class="logo">UGF</div>
+            <div class="org-name">UNITED GLOBAL FEDERATION INDIA</div>
+            <div class="receipt-title">Official Donation Receipt</div>
+        </div>
+        
+        <div class="receipt-info">
+            <div class="receipt-number">Receipt No: ${donation.receiptNumber}</div>
+            <div class="receipt-date">Date of Issue: ${formatDate}</div>
+        </div>
+        
+        <div class="details-grid">
+            <div class="detail-section">
+                <div class="section-title">Donor Information</div>
+                <div class="detail-row">
+                    <span class="detail-label">Full Name:</span>
+                    <span class="detail-value">${donor.name}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Mobile Number:</span>
+                    <span class="detail-value">${donor.mobile}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email Address:</span>
+                    <span class="detail-value">${donor.email || 'Not Provided'}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">PAN Number:</span>
+                    <span class="detail-value">${donor.pan || 'Not Provided'}</span>
+                </div>
+                ${donor.address ? `<div class="detail-row">
+                    <span class="detail-label">Address:</span>
+                    <span class="detail-value">${donor.address}</span>
+                </div>` : ''}
+            </div>
+            
+            <div class="detail-section">
+                <div class="section-title">Donation Details</div>
+                <div class="detail-row">
+                    <span class="detail-label">Purpose:</span>
+                    <span class="detail-value">${donation.purpose.charAt(0).toUpperCase() + donation.purpose.slice(1)}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Mode:</span>
+                    <span class="detail-value">${donation.paymentMode.toUpperCase()}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Transaction Ref:</span>
+                    <span class="detail-value">${donation.reference || 'N/A'}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Donation Date:</span>
+                    <span class="detail-value">${formatDate}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">80G Certificate:</span>
+                    <span class="detail-value">${donation.eightyG === 'yes' ? '<span class="eighty-g-badge">Eligible</span>' : 'Not Applicable'}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="amount-highlight">
+            <div class="amount-text">Total Donation Amount: ₹${donation.amount.toLocaleString('en-IN')}</div>
+        </div>
+        
+        ${donation.notes ? `<div class="detail-section">
+            <div class="section-title">Additional Notes</div>
+            <p style="margin: 0; color: #374151;">${donation.notes}</p>
+        </div>` : ''}
+        
+        <div class="footer">
+            <div class="thank-you">Thank you for your generous contribution!</div>
+            <div class="contact-info">
+                United Global Federation India | Email: info@unitedglobalfederation.org | Phone: +91 98765 43210<br>
+                This is a computer-generated receipt and does not require a signature.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+            `;
+        }
+
+        // Action buttons from view modal
+        document.getElementById('edit-from-view').addEventListener('click', function() {
+            const receiptNumber = this.dataset.receipt;
+            const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+            const donor = donorsDatabase.find(d => d.id === donation.donorId);
+            
+            viewModal.classList.add('hidden');
+            showEditForm(donation, donor);
+        });
+
+        document.getElementById('download-from-view').addEventListener('click', function() {
+            const options = document.getElementById('download-options');
+            options.classList.toggle('hidden');
+        });
+
+        document.getElementById('email-from-view').addEventListener('click', function() {
+            const receiptNumber = this.dataset.receipt;
+            alert(`Receipt ${receiptNumber} emailed successfully!`);
+        });
+
+        document.getElementById('print-from-view').addEventListener('click', function() {
+            const receiptNumber = this.dataset.receipt;
+            showPrintModal(receiptNumber);
+        });
+
+        document.getElementById('delete-from-view').addEventListener('click', function() {
+            const receiptNumber = this.dataset.receipt;
+            viewModal.classList.add('hidden');
+            showDeleteConfirmation(receiptNumber);
+        });
+
+        // Download options functionality
+        document.getElementById('download-receipt').addEventListener('click', function() {
+            const options = document.getElementById('success-download-options');
+            options.classList.toggle('hidden');
+        });
+
+        // Download format selection
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('download-simple') || e.target.classList.contains('download-professional')) {
+                const format = e.target.dataset.format;
+                const receiptNumber = document.getElementById('download-from-view').dataset.receipt;
+                downloadReceipt(receiptNumber, format);
+                document.getElementById('download-options').classList.add('hidden');
+            }
+            
+            if (e.target.classList.contains('success-download-simple') || e.target.classList.contains('success-download-professional')) {
+                const format = e.target.dataset.format;
+                const receiptNumber = document.getElementById('receipt-number').textContent;
+                downloadReceipt(receiptNumber, format);
+                document.getElementById('success-download-options').classList.add('hidden');
+                successModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        function showDownloadOptions(button, receiptNumber) {
+            // Simple inline menu for download options
+            const existingMenu = document.querySelector('.download-menu');
+            if (existingMenu) existingMenu.remove();
+            
+            const menu = document.createElement('div');
+            menu.className = 'download-menu absolute bg-white border border-gray-200 rounded-lg shadow-lg z-20 mt-1';
+            menu.style.minWidth = '150px';
+            menu.innerHTML = `
+                <button class="w-full text-left px-4 py-2 hover:bg-gray-50 download-option" data-format="simple" data-receipt="${receiptNumber}">Simple Receipt</button>
+                <button class="w-full text-left px-4 py-2 hover:bg-gray-50 download-option" data-format="professional" data-receipt="${receiptNumber}">Professional Receipt</button>
+            `;
+            
+            button.parentElement.style.position = 'relative';
+            button.parentElement.appendChild(menu);
+            
+            // Close menu when clicking outside
+            setTimeout(() => {
+                document.addEventListener('click', function closeMenu(e) {
+                    if (!menu.contains(e.target) && e.target !== button) {
+                        menu.remove();
+                        document.removeEventListener('click', closeMenu);
+                    }
+                });
+            }, 100);
+        }
+
+        // Handle download option clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('download-option')) {
+                const format = e.target.dataset.format;
+                const receiptNumber = e.target.dataset.receipt;
+                downloadReceipt(receiptNumber, format);
+                e.target.closest('.download-menu').remove();
+            }
+        });
+
+        function showPrintModal(receiptNumber) {
+            const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+            const donor = donorsDatabase.find(d => d.id === donation.donorId);
+            
+            if (donation && donor) {
+                document.getElementById('print-content').innerHTML = generateProfessionalReceipt(donation, donor);
+                printModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Set current receipt for print buttons
+                document.getElementById('print-professional-btn').dataset.receipt = receiptNumber;
+                document.getElementById('print-simple-btn').dataset.receipt = receiptNumber;
+            }
+        }
+
+        function showDeleteConfirmation(receiptNumber) {
+            const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+            const donor = donorsDatabase.find(d => d.id === donation.donorId);
+            
+            if (donation && donor) {
+                document.getElementById('delete-receipt-number').textContent = receiptNumber;
+                document.getElementById('delete-donor-name').textContent = donor.name;
+                document.getElementById('delete-amount').textContent = `₹${donation.amount.toLocaleString('en-IN')}`;
+                document.getElementById('confirm-delete').dataset.receipt = receiptNumber;
+                
+                deleteModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Print functionality - FIXED
+        document.getElementById('print-professional-btn').addEventListener('click', function() {
+            window.print();
+        });
+
+        document.getElementById('print-simple-btn').addEventListener('click', function() {
+            const receiptNumber = this.dataset.receipt;
+            const donation = donationsDatabase.find(d => d.receiptNumber === receiptNumber);
+            const donor = donorsDatabase.find(d => d.id === donation.donorId);
+            
+            if (donation && donor) {
+                const simpleContent = generateSimpleReceipt(donation, donor);
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(`
+                    <html>
+                        <head><title>Receipt - ${receiptNumber}</title></head>
+                        <body style="font-family: monospace; white-space: pre-line; padding: 20px;">
+                            ${simpleContent}
+                        </body>
+                    </html>
+                `);
+                printWindow.document.close();
+                printWindow.print();
+                printWindow.close();
+            }
+        });
+
+        document.getElementById('print-receipt').addEventListener('click', function() {
+            const receiptNumber = document.getElementById('receipt-number').textContent;
+            showPrintModal(receiptNumber);
+            successModal.classList.add('hidden');
+        });
+
+        // Delete confirmation - FIXED
+        document.getElementById('confirm-delete').addEventListener('click', function() {
+            const receiptNumber = this.dataset.receipt;
+            
+            // Remove from database
+            const donationIndex = donationsDatabase.findIndex(d => d.receiptNumber === receiptNumber);
+            if (donationIndex > -1) {
+                donationsDatabase.splice(donationIndex, 1);
+                
+                // Remove from table
+                const row = document.querySelector(`tr[data-receipt="${receiptNumber}"]`);
+                if (row) {
+                    row.remove();
+                }
+                
+                // Update dashboard
+                updateDashboard();
+                
+                deleteModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                
+                alert('Donation record deleted successfully!');
+            }
+        });
+
+        function resetForm() {
+            donationForm.reset();
+            donorDetails.classList.add('hidden');
+            donorResults.classList.add('hidden');
+            eightyGWarning.classList.add('hidden');
+            donorPan.required = false;
+            newCategoryInput.classList.add('hidden');
+            document.getElementById('donation-date').valueAsDate = new Date();
+        }
+
+        // Receipt Actions
+        document.getElementById('email-receipt').addEventListener('click', () => {
+            alert('Receipt emailed successfully!');
+            successModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        document.getElementById('download-receipt').addEventListener('click', () => {
+            const receiptNumber = document.getElementById('receipt-number').textContent;
+            downloadReceipt(receiptNumber);
+            successModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modals when clicking outside
+        [donationModal, successModal, viewModal, editModal, deleteModal, printModal].forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                    if (this === donationModal) resetForm();
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988e4e9ba6ae1daf',t:'MTc1OTUxNDA5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

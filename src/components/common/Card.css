@@ -1,0 +1,60 @@
+/* Card component styles */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --text-light: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+}
+
+/* Dark mode variables */
+.dark {
+  --bg-color: #1f2937;
+  --text-color: #f9fafb;
+  --text-light: #9ca3af;
+  --border-color: #374151;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+.card {
+  background-color: var(--bg-color);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Card variants */
+.card-hover:hover {
+  box-shadow: 0 10px 15px -3px var(--shadow-color);
+}
+
+.card-bordered {
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+}
+
+.card-flat {
+  box-shadow: none;
+} 

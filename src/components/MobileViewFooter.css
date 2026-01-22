@@ -1,0 +1,19 @@
+
+.mobile-view-footer{
+      display:  none;
+}
+
+@media (max-width : 767px){
+    .mobile-view-footer{
+        display:  block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: hsl(var(--background) / 0.85);
+        border-top: 1px solid hsl(var(--border));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    }
+}

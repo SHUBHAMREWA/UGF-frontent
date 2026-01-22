@@ -1,0 +1,387 @@
+.profile-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.profile-header {
+  margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.tab-button:hover {
+  background-color: #f5f5f5;
+}
+
+.tab-button.active {
+  color: #4CAF50;
+  font-weight: 600;
+  border-bottom: 2px solid #4CAF50;
+}
+
+.profile-content {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.profile-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.info-group {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.info-group label {
+  font-weight: 600;
+  color: #666;
+  width: 120px;
+}
+
+.info-group span {
+  color: #333;
+}
+
+.role-badge {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.donation-history h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.donations-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.donation-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.donation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.donation-amount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.donation-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.donation-status.completed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.donation-status.pending {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.donation-status.failed {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.donation-details {
+  color: #666;
+}
+
+.donation-date {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.donation-purpose {
+  font-size: 1rem;
+}
+
+.no-donations {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+.error-message {
+  color: #dc3545;
+  text-align: center;
+  padding: 2rem;
+  background: #f8d7da;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-group label {
+    width: auto;
+  }
+}
+
+
+.edit-profile-form{
+  width:100%;
+}
+
+.edit-profile-form .detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.edit-profile-form label {
+  color: #666;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.edit-profile-form input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s;
+  width:100%;
+}
+
+.edit-profile-form input:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.profile-form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.save-btn:hover {
+  background: #16a34a;
+}
+
+.cancel-btn {
+  background: #f3f4f8;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+.success-msg {
+  color: #22c55e;
+  background: #e8f5e9;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error-msg {
+  color: #ef4444;
+  background: #ffebee;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.profile-details {
+  max-width: 440px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(60,60,100,0.09);
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar-big {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #3b82f6 60%, #22c55e 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(60,60,100,0.10);
+}
+
+.profile-details h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f3f4f8;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item label {
+  color: #888;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.detail-item span {
+  color: #222;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .profile-details {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .profile-avatar-big {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .profile-details h2 {
+    font-size: 1.1rem;
+  }
+} 

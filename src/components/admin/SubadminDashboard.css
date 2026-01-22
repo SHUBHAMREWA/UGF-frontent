@@ -1,0 +1,139 @@
+.subadmin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f8fa;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 2px 0 8px rgba(60, 72, 88, 0.04);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-sidebar h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a3c34;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.01em;
+}
+
+.admin-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-nav li {
+  padding: 0.85rem 1.2rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.admin-nav li.active {
+  background: #e3f6ed;
+  color: #1aaf5d;
+  font-weight: 700;
+}
+
+.admin-nav li:hover:not(.active) {
+  background: #f0f4f8;
+  color: #1976d2;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  background: #f6f8fa;
+  min-height: 100vh;
+}
+
+/* Card-like content area */
+.admin-content > * {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(60, 72, 88, 0.07);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.permissions-overview {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 1px 4px rgba(60, 72, 88, 0.04);
+}
+
+.permissions-overview h3 {
+  font-size: 1.1rem;
+  color: #1aaf5d;
+  margin-bottom: 1rem;
+}
+
+.permissions-overview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.permissions-overview li {
+  background: #e3f6ed;
+  color: #1aaf5d;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+.no-permission {
+  color: #f44336;
+  background: #fff0f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  margin: 2rem 0;
+}
+
+.overview h2 {
+  font-size: 2rem;
+  color: #1a3c34;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .subadmin-dashboard {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: none;
+    padding: 1.5rem 1rem;
+  }
+  .admin-content {
+    padding: 1.5rem 0.5rem;
+  }
+  .admin-content > * {
+    padding: 1.2rem 1rem;
+  }
+} 

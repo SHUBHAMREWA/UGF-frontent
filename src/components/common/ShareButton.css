@@ -1,0 +1,256 @@
+.share-button-container {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+}
+
+.share-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(294deg, #000000 0%, #16a286 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.share-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.share-button:active {
+  transform: translateY(0);
+}
+
+.share-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999999;
+  backdrop-filter: blur(4px);
+}
+
+.share-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 999999;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: popupSlideIn 0.3s ease;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.share-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.share-popup-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.share-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.share-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.share-close-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.share-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  padding: 1.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.share-option:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.share-option:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.share-option svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.share-option.success {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border-color: #4caf50;
+}
+
+.share-option.success svg {
+  color: #4caf50;
+}
+
+/* Platform-specific colors on hover */
+.share-option:hover[title*="Facebook"] {
+  background: rgba(66, 103, 178, 0.1);
+  color: #4267b2;
+  border-color: #4267b2;
+}
+
+.share-option:hover[title*="Twitter"] {
+  background: rgba(29, 161, 242, 0.1);
+  color: #1da1f2;
+  border-color: #1da1f2;
+}
+
+.share-option:hover[title*="WhatsApp"] {
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
+  border-color: #25d366;
+}
+
+.share-option:hover[title*="LinkedIn"] {
+  background: rgba(0, 119, 181, 0.1);
+  color: #0077b5;
+  border-color: #0077b5;
+}
+
+.share-option:hover[title*="Share"] {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.share-option:hover[title*="Copy"] {
+  background: rgba(156, 39, 176, 0.1);
+  color: #9c27b0;
+  border-color: #9c27b0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .share-popup {
+    min-width: 280px;
+    max-width: 95vw;
+  }
+  
+  .share-options {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .share-option {
+    min-height: 60px;
+    padding: 0.75rem;
+  }
+  
+  .share-option span {
+    font-size: 0.8rem;
+  }
+  
+  .share-popup-header {
+    padding: 1rem 1rem 0.75rem 1rem;
+  }
+  
+  .share-popup-header h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .share-popup {
+    min-width: 260px;
+    margin: 1rem;
+  }
+  
+  .share-options {
+    padding: 0.75rem;
+  }
+  
+  .share-option {
+    min-height: 50px;
+    padding: 0.5rem;
+  }
+  
+  .share-option svg {
+    width: 20px;
+    height: 20px;
+  }
+} 

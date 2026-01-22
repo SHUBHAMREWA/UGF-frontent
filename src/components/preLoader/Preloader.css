@@ -1,0 +1,20 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  z-index: 50;
+}
+
+/* 3  vertical sections */
+.section {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* moving black child */
+.wipe {
+  position: absolute;
+  inset: 0;
+  background: #000000; 
+}

@@ -1,0 +1,13 @@
+
+.move-to-top-div{
+      background:  hsl(var(--accent)) ;
+      z-index: 1000;
+    
+      border  : 2px solid var(--border)
+}
+
+.move-to-top-button{
+     color  : hsl(var(--primary-foreground)) ;
+      padding :  10px ;
+      background-color: hsl(var(--primary));
+}

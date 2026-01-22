@@ -1,0 +1,512 @@
+.emergency-contact-management {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px #e5e7eb44;
+  min-height: 80vh;
+}
+
+.management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.management-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a3c34;
+}
+
+.add-button {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+.add-button:hover {
+  background: #16a34a;
+}
+
+.filters-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.filter-group label {
+  font-weight: 500;
+  color: #333;
+}
+.filter-group select, .filter-group input {
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafbfc;
+}
+
+.contacts-table {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+.contacts-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+.contacts-table th, .contacts-table td {
+  padding: 1rem 0.7rem;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+}
+.contacts-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #333;
+}
+.contact-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.verified-badge {
+  background: #e3f6ed;
+  color: #22c55e;
+  border-radius: 6px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.service-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.status-badge {
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-block;
+}
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.approve-btn, .reject-btn, .delete-btn, .view-btn, .edit-btn {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.approve-btn {
+  background: #22c55e;
+  color: #fff;
+}
+
+.approve-btn:hover {
+  background: #16a34a;
+}
+
+.reject-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.reject-btn:hover {
+  background: #dc2626;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+.edit-btn {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 95vw;
+  box-shadow: 0 4px 24px #0002;
+  position: relative;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.close-btn:hover {
+  background: #f0f0f0;
+}
+.add-form, .reject-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form-row {
+  display: flex;
+  gap: 1.2rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+.form-group label {
+  font-weight: 500;
+  color: #333;
+}
+.form-group input, .form-group select, .form-group textarea {
+  padding: 0.6rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafbfc;
+}
+.form-group textarea {
+  resize: vertical;
+}
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.submit-btn, .cancel-btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.submit-btn {
+  background: #22c55e;
+  color: #fff;
+}
+.submit-btn:hover {
+  background: #16a34a;
+}
+.cancel-btn {
+  background: #f0f0f0;
+  color: #666;
+}
+.cancel-btn:hover {
+  background: #e0e0e0;
+}
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+@media (max-width: 900px) {
+  .emergency-contact-management {
+    padding: 1rem;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .modal-content {
+    padding: 1rem;
+  }
+} 
+
+.custom-service-section {
+  margin-bottom: 1rem;
+}
+
+.custom-service-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.custom-service-input input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafbfc;
+}
+
+.custom-service-input input:focus {
+  outline: none;
+  border-color: #22c55e;
+}
+
+.add-custom-service-btn {
+  padding: 0.6rem 1rem;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-custom-service-btn:hover {
+  background: #16a34a;
+}
+
+.custom-services-display {
+  margin-bottom: 1rem;
+}
+
+.custom-services-display label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.custom-services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.custom-service-tag {
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #ffeaa7;
+}
+
+.remove-custom-service {
+  background: none;
+  border: none;
+  color: #856404;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.remove-custom-service:hover {
+  background: #ffeaa7;
+} 
+
+.view-btn {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.view-btn:hover {
+  background: #1976d2;
+}
+
+.view-contact-details {
+  padding: 1rem 0;
+}
+
+.view-contact-details h4 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.view-contact-details p {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.view-contact-details p:last-child {
+  border-bottom: none;
+}
+
+.view-contact-details strong {
+  color: #666;
+  min-width: 200px;
+  display: inline-block;
+}
+
+.contact-info-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.contact-info-section h5 {
+  color: #333;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.services-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+/* Document Items Styling */
+.document-item {
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.document-item:hover {
+  border-color: #22c55e;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.1);
+}
+
+.document-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.document-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 6px;
+  color: #22c55e;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.document-action-btn:hover {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  transform: translateY(-1px);
+}
+
+.services-display .service-tag {
+  background: #2196f3;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.passport-photo {
+  margin-top: 0.5rem;
+}
+
+.passport-photo img {
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} 

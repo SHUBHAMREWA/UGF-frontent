@@ -1,0 +1,41 @@
+# UI DESIGN SYSTEM – STRICTLY ENFORCED
+
+This project uses a fixed design system.
+You MUST follow the design system defined in:
+docs/design-system.md
+
+DO NOT:
+- Invent colors
+- Invent spacing
+- Invent typography
+- Use purple
+- Use random Tailwind classes
+- Add animations unless explicitly asked
+
+DEFAULT UI STACK:
+- React + Tailwind CSS
+- shadcn/ui components
+- lucide-react icons
+
+GLOBAL RULES:
+- Use semantic Tailwind tokens only:
+  bg-background, text-foreground, text-muted-foreground,
+  bg-primary, bg-accent, bg-muted, bg-card
+- All colors must come from CSS variables using:
+  hsl(var(--token))
+
+- Cards must use:
+  bg-card rounded-xl shadow-md
+
+- Buttons must use predefined variants from button.tsx
+
+- Layout rules:
+  max-w-[1280px] mx-auto
+  section padding: py-16 md:py-24 px-6
+  gap-6 for grids
+
+- No animations.
+- Static UI only.
+- Mobile-first responsive design.
+
+If any instruction conflicts, the design system wins.

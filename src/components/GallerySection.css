@@ -1,0 +1,213 @@
+/* Gallery Section - Success Stories Style */
+.gallery-section {
+  padding: var(--spacing-16) 0;
+  background: var(--white);
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Left Section - Text Block */
+.gallery-text-block {
+  padding: var(--spacing-8) var(--spacing-4);
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.gallery-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: var(--accent-green);
+  color: var(--gray-800);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-6);
+}
+
+.tag-icon {
+  font-size: 0.875rem;
+}
+
+.gallery-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-6);
+  line-height: 1.2;
+}
+
+.gallery-description {
+  font-size: var(--font-size-base);
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--error);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+}
+
+.gallery-cta:hover {
+  color: var(--error);
+  transform: translateX(4px);
+}
+
+.cta-icon {
+  font-size: 0.875rem;
+  transition: transform var(--transition-fast);
+}
+
+.gallery-cta:hover .cta-icon {
+  transform: translateX(4px);
+}
+
+/* Right Section - Horizontal Scrolling Grid */
+.gallery-grid {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: 0 var(--spacing-4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.gallery-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* .gallery-card {
+  flex: 0 0 239px;
+  height: 300px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+} */
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gallery-card img {
+
+  height: 250px;
+  width: 307px;
+  object-fit: contain;
+  transition: transform var(--transition-normal);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12);
+  color: var(--gray-600);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gray-200);
+  border-top: 3px solid var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-4);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gallery-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .gallery-grid {
+    padding: 0 var(--spacing-3);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: var(--spacing-12) 0;
+  }
+  
+  .gallery-text-block {
+    padding: var(--spacing-6) var(--spacing-3);
+  }
+  
+  .gallery-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .gallery-description {
+    font-size: var(--font-size-sm);
+  }
+  
+  .gallery-grid {
+    padding: 0 var(--spacing-2);
+    gap: var(--spacing-3);
+  }
+  
+  .gallery-card {
+    flex: 0 0 220px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-card {
+    flex: 0 0 200px;
+    height: 260px;
+  }
+  
+  .gallery-tag {
+    font-size: 0.7rem;
+    padding: var(--spacing-1) var(--spacing-3);
+  }
+  
+  .gallery-title {
+    font-size: var(--font-size-xl);
+  }
+} 
