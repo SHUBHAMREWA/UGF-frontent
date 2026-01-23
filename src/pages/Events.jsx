@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { format } from "date-fns";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Calendar, MapPin, Clock, ArrowRight, Filter } from "lucide-react";
+import { Calendar} from "lucide-react";
 import api from "../utils/api";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import ImageLoader from "../components/ImageLoader";
 import EventCard from "../components/ui/eventCard";
@@ -78,14 +76,7 @@ const Events = () => {
     });
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'upcoming': return 'bg-primary/10 text-primary';
-      case 'ongoing': return 'bg-secondary/10 text-secondary';
-      case 'past': return 'bg-muted text-muted-foreground';
-      default: return 'bg-muted text-muted-foreground';
-    }
-  };
+
 
   const tabs = [
     { id: 'all', label: 'All Events' },

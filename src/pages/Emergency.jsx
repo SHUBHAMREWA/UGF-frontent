@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaMapMarkerAlt, FaClock, FaUserPlus, FaExclamationTriangle, FaEye, FaStar, FaShare, FaShieldAlt, FaMedal, FaUserCheck, FaCamera, FaDownload, FaEdit, FaHeart, FaLeaf, FaPaw, FaDog, FaCat, FaDove, FaExclamationCircle, FaChevronLeft, FaChevronRight, FaCheckCircle } from 'react-icons/fa';
+import { FaPhone, FaMapMarkerAlt, FaClock, FaUserPlus,  FaEye, FaStar, FaShare, FaShieldAlt, FaMedal, FaUserCheck, FaCamera,  FaHeart, FaLeaf, FaPaw, FaDog, FaCat, FaDove, FaExclamationCircle, FaChevronLeft, FaChevronRight, FaCheckCircle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import authService from '../services/authService';
 import api from '../utils/api';
@@ -72,7 +72,6 @@ const Emergency = () => {
     specializations: []
   });
 
-  const [customService, setCustomService] = useState('');
 
   // Maharashtra Districts and Talukas Data
   const maharashtraData = {
@@ -227,31 +226,7 @@ const Emergency = () => {
     }));
   };
 
-  const handleServiceChange = (service) => {
-    setFormData(prev => ({
-      ...prev,
-      services: prev.services.includes(service)
-        ? prev.services.filter(s => s !== service)
-        : [...prev.services, service]
-    }));
-  };
-
-  const handleAddCustomService = () => {
-    if (customService.trim() && !formData.services.includes(customService.trim())) {
-      setFormData(prev => ({
-        ...prev,
-        services: [...prev.services, customService.trim()]
-      }));
-      setCustomService('');
-    }
-  };
-
-  const handleRemoveCustomService = (serviceToRemove) => {
-    setFormData(prev => ({
-      ...prev,
-      services: prev.services.filter(service => service !== serviceToRemove)
-    }));
-  };
+ 
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;

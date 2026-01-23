@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import authService from '../services/authService';
 import { User, Mail, Phone, Shield, Edit2, Save, X, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -8,8 +6,6 @@ import { Button } from './ui/button';
 import ImageLoader from './ImageLoader';
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const { currentUser } = useAuth();
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

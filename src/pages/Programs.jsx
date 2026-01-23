@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { GraduationCap, Search, Filter, ArrowRight, Clock, Users } from 'lucide-react';
+import { GraduationCap, Search,  ArrowRight, Clock } from 'lucide-react';
 import api from "../utils/api";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import { ArrowLeft, Calendar, Clock, MapPin, Share2, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, MapPin, Share2 } from 'lucide-react';
 import ImageCarousel from '../components/common/ImageCarousel';
 import ShareButton from '../components/common/ShareButton';
 import api from '../utils/api';

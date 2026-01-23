@@ -43,7 +43,8 @@ const UserDashboard = () => {
         });
         setRequests(requestsRes.data.data || []);
       } catch (err) {
-        setError('Failed to load dashboard data');
+        console.error('❌ Dashboard Fetch Error:', err);
+        setError(`Failed to load dashboard data: ${err.message}`);
       } finally {
         setLoading(false);
       }
@@ -51,7 +52,14 @@ const UserDashboard = () => {
     fetchData();
   }, []);
 
-  const totalDonated = payments.filter(p => p.status === 'paid').reduce((sum, p) => sum + p.amount, 0);
+  let totalDonated = 0;
+  try {
+    totalDonated = (payments || [])
+      .filter(p => p && p.status === 'paid')
+      .reduce((sum, p) => sum + (Number(p.amount) || 0), 0);
+  } catch (err) {
+    console.error('❌ Error calculating totalDonated:', err);
+  }
 
   const handleDownloadReceipt = (payment) => {
     setReceiptData({
@@ -101,6 +109,8 @@ const UserDashboard = () => {
       }, 100);
     }
   }, [downloading, receiptData, downloadPaymentId]);
+
+  console.log('Rendering UserDashboard. Loading:', loading, 'Error:', error, 'Profiles:', profile, 'Payments:', payments.length, 'Requests:', requests.length);
 
   if (loading) {
     return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Images, Filter } from "lucide-react";
+import { Images } from "lucide-react";
 import api from "../utils/api";
 import { Card } from "../components/ui/card";
 import { Button } from "../components/ui/button";

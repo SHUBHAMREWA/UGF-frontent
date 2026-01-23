@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import authService from '../services/authService';
-import { ChevronDown, LogOut, LayoutDashboard, Menu, X, Heart, AlignJustify, Palette, Check } from 'lucide-react';
+import { ChevronDown, LogOut, LayoutDashboard, X, Heart, AlignJustify, Palette, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
 import logo from './logo.JPG'

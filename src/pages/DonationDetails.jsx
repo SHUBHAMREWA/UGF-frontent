@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../utils/api';
-import ShareButton from '../components/common/ShareButton';
 import PageLoader from '../components/PageLoader';
 import GuestDonationForm from '../components/GuestDonationForm';
 import ImageLoader from '../components/ImageLoader';
@@ -28,10 +27,6 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
   MessageCircle
 } from 'lucide-react';
 import './DonationDetails.css';
